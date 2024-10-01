@@ -21,6 +21,7 @@ resource "helm_release" "rabbit_mq" {
       username         = var.username,
       password         = var.password,
       domain_name      = var.domain_name,
+      dash_domain_name = var.domain_name,
       issuer_name      = var.issuer_name
       issuer_kind      = var.issuer_kind
     })
