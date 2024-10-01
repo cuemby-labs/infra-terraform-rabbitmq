@@ -1,10 +1,78 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template walrus-template-template
+  title: OpenAPI schema for template .
 components:
   schemas:
     variables:
       type: object
+      required:
+      - password
+      - username
+      properties:
+        release_name:
+          title: Release Name
+          type: string
+          description: The name of the Helm release.
+          default: rabbitmq
+          x-walrus-ui:
+            group: Basic
+            order: 2
+        namespace_name:
+          title: Namespace Name
+          type: string
+          description: The namespace where the Helm release will be installed.
+          default: rabbit-mq
+          x-walrus-ui:
+            group: Basic
+            order: 3
+        chart_version:
+          title: Chart Version
+          type: string
+          description: The version of the ingress-nginx Helm chart.
+          default: 15.0.1
+          x-walrus-ui:
+            group: Basic
+            order: 4
+        username:
+          title: Username
+          type: string
+          description: Username for RabbitMQ
+          x-walrus-ui:
+            group: Basic
+            order: 5
+        password:
+          title: Password
+          type: string
+          description: Password for RabbitMQ
+          format: password
+          writeOnly: true
+          x-walrus-ui:
+            group: Basic
+            order: 6
+        domain_name:
+          title: Domain Name
+          type: string
+          description: domain name for RabbitMQ, e.g. 'dev.domainname.com'
+          default: dev.domainname.com
+          x-walrus-ui:
+            group: Basic
+            order: 7
+        issuer_name:
+          title: Issuer Name
+          type: string
+          description: origin issuer name
+          default: origin-ca-issuer
+          x-walrus-ui:
+            group: Basic
+            order: 8
+        issuer_kind:
+          title: Issuer Kind
+          type: string
+          description: origin issuer kind
+          default: ClusterOriginIssuer
+          x-walrus-ui:
+            group: Basic
+            order: 9
       x-walrus-ui:
         groupOrder:
         - Basic
