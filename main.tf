@@ -10,7 +10,7 @@ resource "kubernetes_namespace" "rabbit_mq" {
 
 resource "helm_release" "rabbit_mq" {
   name       = var.release_name
-  repository = "oci://registry-1.docker.io/bitnamicharts/rabbitmq"
+  repository = "oci://registry-1.docker.io/bitnamicharts/"
   chart      = "rabbitmq"
   version    = var.chart_version
   namespace  = var.namespace_name
