@@ -10,11 +10,8 @@ ingress:
       cert-manager.io/issuer-kind: ${issuer_kind}
       cert-manager.io/issuer-group: cert-manager.k8s.cloudflare.com
       external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+      external-dns.alpha.kubernetes.io/hostname: rabbitmq.${domain_name}
   tls: true
-  extraTls: 
-    - hosts:
-        - rabbitmq.${domain_name}
-      secretName: "rabbitmq-${dash_domain_name}"
 auth:
   username: ${username}
   password: ${password}
