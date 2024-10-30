@@ -63,24 +63,24 @@ variable "password" {
 
 variable "domain_name" {
   type        = string
-  description = "domain name for RabbitMQ, e.g. 'dev.domainname.com'"
+  description = "Domain name for RabbitMQ, e.g. 'dev.domainname.com'"
   default     = "dev.domainname.com"
 }
 
 variable "dash_domain_name" {
   type        = string
-  description = "domain name with dashes for RabbitMQ, e.g. 'dev-domainname-com'"
+  description = "Domain name with dashes for RabbitMQ, e.g. 'dev-domainname-com'"
   default     = "dev-domainname-com"
 }
 
 variable "issuer_name" {
   type        = string
-  description = "origin issuer name"
+  description = "Origin issuer name"
   default     = "origin-ca-issuer"
 }
 
 variable "issuer_kind" {
   type        = string
-  description = "origin issuer kind"
+  description = "Origin issuer kind"
   default     = "ClusterOriginIssuer"
 }

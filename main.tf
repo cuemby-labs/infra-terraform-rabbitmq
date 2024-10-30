@@ -1,6 +1,6 @@
-locals {
-  context = var.context
-}
+#
+# RabbitMQ resources
+#
 
 resource "kubernetes_namespace" "rabbit_mq" {
   metadata {
@@ -26,4 +26,12 @@ resource "helm_release" "rabbit_mq" {
       issuer_kind      = var.issuer_kind
     })
   ]
+}
+
+#
+# Walrus information
+#
+
+locals {
+  context = var.context
 }

@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for template .
+  title: OpenAPI schema for Rabbit MQ template .
 components:
   schemas:
     variables:
@@ -78,6 +78,9 @@ components:
           type: string
           description: origin issuer kind
           default: ClusterOriginIssuer
+          enum:
+          - ClusterOriginIssuer
+          - OriginIssuer
           x-walrus-ui:
             group: Basic
             order: 10

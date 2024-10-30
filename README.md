@@ -1,11 +1,23 @@
-# Awesome Walrus Template
+# RabbitMQ Template
 
-Start here to create an awesome Walrus template.
+Terraform module which deploys Rabbit MQ on any kubernetes cluster.
 
 ## Usage
 
 ```hcl
+module "rabbitmq" {
+  source = "./modules/rabbitmq" # Path to the Rabbit MQ module
 
+  namespace_name   = var.namespace_name       # The namespace where Origin-CA will be created
+  release_name     = var.helm_release_name    # The name of the Helm release
+  chart_version    = var.helm_chart_version   # The version of the Origin-CA Helm chart
+  username         = var.crds_version         # Version of the OriginIssuer CRD
+  password         = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
+  domain_name      = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
+  dash_domain_name = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
+  issuer_name      = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
+  issuer_kind      = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
+}
 ```
 
 ## Examples
@@ -22,33 +34,47 @@ Please read our [contributing guide](./docs/CONTRIBUTING.md) if you're intereste
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.5.7 |
+| <a name="requirement_kubernetes"></a> [kubernetes](#requirement\_kubernetes) | >= 2.23.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | >= 2.11.0 |
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_kubernetes"></a> [kubernetes](#provider\_kubernetes) | >= 2.23.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | >= 2.11.0 |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_submodule"></a> [submodule](#module\_submodule) | ./modules/submodule | n/a |
+No modules.
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [kubernetes_namespace.example](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) | resource |
+| [helm_release.example](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_context"></a> [context](#input\_context) | Receive contextual information. When Walrus deploys, Walrus will inject specific contextual information into this field.<br><br>Examples:<pre>context:<br>  project:<br>    name: string<br>    id: string<br>  environment:<br>    name: string<br>    id: string<br>  resource:<br>    name: string<br>    id: string</pre> | `map(any)` | `{}` | no |
+| <a name="input_namespace_name"></a> [namespace_name](#input_namespace_name) | Namespace where Rabbit MQ will be installed. | `string` | `"rabbit-mq"` | no |
+| <a name="input_release_name"></a> [release_name](#input_release_name) | Name for the Rabbit MQ Helm release. | `string` | `"rabbitmq"` | no |
+| <a name="input_chart_version"></a> [chart_version](#input_chart_version) | Version of the Rabbit MQ Helm chart. | `string` | `"15.0.1"` | no |
+| <a name="input_username"></a> [username](#input_username) | Username for RabbitMQ. | `string` | `` | yes |
+| <a name="input_password"></a> [password](#input_password) | Password for RabbitMQ. | `string` | `"rabbitmq"` | yes |
+| <a name="input_domain_name"></a> [domain_name](#input_domain_name) | Domain name for RabbitMQ, e.g. 'dev.domainname.com'. | `string` | `"dev.domainname.com"` | no |
+| <a name="input_dash_domain_name"></a> [dash_domain_name](#input_dash_domain_name) | domain name with dashes for RabbitMQ, e.g. 'dev-domainname-com'. | `string` | `"dev-domainname-com"` | no |
+| <a name="input_issuer_name"></a> [issuer_name](#input_issuer_name) | Origin issuer name. | `string` | `"origin-ca-issuer"` | yes |
+| <a name="input_issuer_kind"></a> [issuer_kind](#input_issuer_kind) | Origin issuer kind. | `string` | `"ClusterOriginIssuer"` | no |
+
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_submodule"></a> [submodule](#output\_submodule) | The message from submodule. |
 | <a name="output_walrus_environment_id"></a> [walrus\_environment\_id](#output\_walrus\_environment\_id) | The id of environment where deployed in Walrus. |
 | <a name="output_walrus_environment_name"></a> [walrus\_environment\_name](#output\_walrus\_environment\_name) | The name of environment where deployed in Walrus. |
 | <a name="output_walrus_project_id"></a> [walrus\_project\_id](#output\_walrus\_project\_id) | The id of project where deployed in Walrus. |
