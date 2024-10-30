@@ -6,17 +6,17 @@ Terraform module which deploys Rabbit MQ on any kubernetes cluster.
 
 ```hcl
 module "rabbitmq" {
-  source = "./modules/rabbitmq" # Path to the Rabbit MQ module
+  source = "./modules/rabbitmq"               # Path to the Rabbit MQ module
 
-  namespace_name   = var.namespace_name       # The namespace where Origin-CA will be created
-  release_name     = var.helm_release_name    # The name of the Helm release
-  chart_version    = var.helm_chart_version   # The version of the Origin-CA Helm chart
-  username         = var.crds_version         # Version of the OriginIssuer CRD
-  password         = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
-  domain_name      = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
-  dash_domain_name = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
-  issuer_name      = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
-  issuer_kind      = var.manifests_urls       # List of HTTP RAW URLs for kubernetes manifest
+  namespace_name   = "rabbit-mq"              # The namespace where Origin-CA will be created
+  release_name     = "rabbitmq"               # The name of the Helm release
+  chart_version    = "15.0.1"                 # The version of the Origin-CA Helm chart
+  username         = "Username for RabbitMQ"  # Version of the OriginIssuer CRD
+  password         = "Password for RabbitMQ"  # List of HTTP RAW URLs for kubernetes manifest
+  domain_name      = "dev.domainname.com"     # List of HTTP RAW URLs for kubernetes manifest
+  dash_domain_name = "dev-domainname-com"     # List of HTTP RAW URLs for kubernetes manifest
+  issuer_name      = "origin-ca-issuer"       # List of HTTP RAW URLs for kubernetes manifest
+  issuer_kind      = "ClusterOriginIssuer"    # List of HTTP RAW URLs for kubernetes manifest
 }
 ```
 
