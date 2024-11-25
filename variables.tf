@@ -67,12 +67,6 @@ variable "domain_name" {
   default     = "dev.domainname.com"
 }
 
-variable "dash_domain_name" {
-  type        = string
-  description = "Domain name with dashes for RabbitMQ, e.g. 'dev-domainname-com'"
-  default     = "dev-domainname-com"
-}
-
 variable "issuer_name" {
   type        = string
   description = "Origin issuer name"
