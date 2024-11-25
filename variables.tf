@@ -53,24 +53,20 @@ variable "chart_version" {
 variable "username" {
   type        = string
   description = "Username for RabbitMQ"
+  default     = "admin"
 }
 
 variable "password" {
   type        = string
   description = "Password for RabbitMQ"
   sensitive   = true 
+  default     = ""
 }
 
 variable "domain_name" {
   type        = string
   description = "Domain name for RabbitMQ, e.g. 'dev.domainname.com'"
   default     = "dev.domainname.com"
-}
-
-variable "dash_domain_name" {
-  type        = string
-  description = "Domain name with dashes for RabbitMQ, e.g. 'dev-domainname-com'"
-  default     = "dev-domainname-com"
 }
 
 variable "issuer_name" {
