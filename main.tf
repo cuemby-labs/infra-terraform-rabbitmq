@@ -29,9 +29,15 @@ resource "helm_release" "rabbit_mq" {
 }
 
 #
-# Walrus information
+# Walrus Information
 #
 
 locals {
   context = var.context
+}
+
+module "submodule" {
+  source = "./modules/submodule"
+
+  message = "Hello, submodule"
 }
