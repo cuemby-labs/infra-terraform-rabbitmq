@@ -53,12 +53,14 @@ variable "chart_version" {
 variable "username" {
   type        = string
   description = "Username for RabbitMQ"
+  default     = "admin"
 }
 
 variable "password" {
   type        = string
   description = "Password for RabbitMQ"
   sensitive   = true 
+  default     = ""
 }
 
 variable "domain_name" {
