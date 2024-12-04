@@ -1,3 +1,4 @@
+# RabbitMQ Ingress Configuration
 ingress:
   enabled: true
   hostname: rabbitmq.${domain_name}
@@ -15,6 +16,18 @@ ingress:
   tls: true
   path: /
   pathType: Prefix
+
+# RabbitMQ credentials
 auth:
   username: ${username}
   password: ${password}
+  securePassword: true
+
+# RabbitMQ Pod resources
+resources:
+  limits:
+    cpu: ${limits_cpu}
+    memory: ${limits_memory}
+  requests:
+    cpu: ${request_cpu}
+    memory: ${request_memory}

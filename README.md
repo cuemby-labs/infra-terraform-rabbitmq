@@ -17,6 +17,17 @@ module "rabbitmq" {
   dash_domain_name = "dev-domainname-com"     # List of HTTP RAW URLs for kubernetes manifest
   issuer_name      = "origin-ca-issuer"       # List of HTTP RAW URLs for kubernetes manifest
   issuer_kind      = "ClusterOriginIssuer"    # List of HTTP RAW URLs for kubernetes manifest
+
+  resources = {
+    limits = {
+      cpu    = "2000m"
+      memory = "512Mi"
+    }
+    requests = {
+      cpu    = "1000m"
+      memory = "256Mi"
+    }
+  }
 }
 ```
 
@@ -69,6 +80,7 @@ No modules.
 | <a name="input_dash_domain_name"></a> [dash_domain_name](#input_dash_domain_name) | domain name with dashes for RabbitMQ, e.g. 'dev-domainname-com'. | `string` | `"dev-domainname-com"` | no |
 | <a name="input_issuer_name"></a> [issuer_name](#input_issuer_name) | Origin issuer name. | `string` | `"origin-ca-issuer"` | yes |
 | <a name="input_issuer_kind"></a> [issuer_kind](#input_issuer_kind) | Origin issuer kind. | `string` | `"ClusterOriginIssuer"` | no |
+| <a name="input_resources"></a> [resources](#input_resources) | Resource limits and requests for Cert-Manager pods. | `map(map(string))` | `"See example"` | no |
 
 
 ## Outputs

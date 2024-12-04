@@ -46,6 +46,22 @@ variable "chart_version" {
   default     = "15.0.1"
 }
 
+variable "resources" {
+  description = "Resource limits and requests for the RabbitMQ Helm release."
+  type        = map(map(string))
+
+  default = {
+    limits = {
+      cpu    = "2000m"
+      memory = "512Mi"
+    }
+    requests = {
+      cpu    = "1000m"
+      memory = "256Mi"
+    }
+  }
+}
+
 #
 # RabbitMQ manifest variables
 #
