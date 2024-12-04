@@ -1,13 +1,10 @@
 openapi: 3.0.3
 info:
-  title: OpenAPI schema for Rabbit MQ template .
+  title: OpenAPI schema for RabbitMQ template .
 components:
   schemas:
     variables:
       type: object
-      required:
-      - password
-      - username
       properties:
         release_name:
           title: Release Name
@@ -33,42 +30,57 @@ components:
           x-walrus-ui:
             group: Basic
             order: 4
+        resources:
+          title: Resources
+          type: object
+          description: Resource limits and requests for the RabbitMQ Helm release.
+          default:
+            limits:
+              cpu: 2000m
+              memory: 512Mi
+            requests:
+              cpu: 1000m
+              memory: 256Mi
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+            x-walrus-ui:
+              colSpan: 12
+          x-walrus-ui:
+            colSpan: 12
+            group: Basic
+            order: 5
         username:
           title: Username
           type: string
           description: Username for RabbitMQ
+          default: admin
           x-walrus-ui:
             group: Basic
-            order: 5
+            order: 6
         password:
           title: Password
           type: string
           description: Password for RabbitMQ
+          default: ""
           format: password
           writeOnly: true
           x-walrus-ui:
             group: Basic
-            order: 6
+            order: 7
         domain_name:
           title: Domain Name
           type: string
-          description: domain name for RabbitMQ, e.g. 'dev.domainname.com'
+          description: Domain name for RabbitMQ, e.g. 'dev.domainname.com'
           default: dev.domainname.com
-          x-walrus-ui:
-            group: Basic
-            order: 7
-        dash_domain_name:
-          title: Dash Domain Name
-          type: string
-          description: domain name with dashes for RabbitMQ, e.g. 'dev-domainname-com'
-          default: dev-domainname-com
           x-walrus-ui:
             group: Basic
             order: 8
         issuer_name:
           title: Issuer Name
           type: string
-          description: origin issuer name
+          description: Origin issuer name
           default: origin-ca-issuer
           x-walrus-ui:
             group: Basic
@@ -76,11 +88,8 @@ components:
         issuer_kind:
           title: Issuer Kind
           type: string
-          description: origin issuer kind
+          description: Origin issuer kind
           default: ClusterOriginIssuer
-          enum:
-          - ClusterOriginIssuer
-          - OriginIssuer
           x-walrus-ui:
             group: Basic
             order: 10

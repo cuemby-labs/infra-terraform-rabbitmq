@@ -22,8 +22,12 @@ resource "helm_release" "rabbit_mq" {
       password         = var.password,
       domain_name      = var.domain_name,
       dash_domain_name = var.domain_name,
-      issuer_name      = var.issuer_name
-      issuer_kind      = var.issuer_kind
+      issuer_name      = var.issuer_name,
+      issuer_kind      = var.issuer_kind,
+      request_memory   = var.resources["requests"]["memory"],
+      limits_memory    = var.resources["limits"]["memory"],
+      request_cpu      = var.resources["requests"]["cpu"],
+      limits_cpu       = var.resources["limits"]["cpu"]
     })
   ]
 }
